@@ -1,1 +1,43 @@
-<p>booklist works!</p>
+<div class="container">
+    <h2 style="text-align: center;">Book List</h2>
+    <button class="btn btn-primary btn-sm" routerLink="../add">Add Book</button>
+    <br>
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table id="BookTable">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Image</td>
+                    <td>AuthorName</td>
+                    <td>PublishDate</td>
+                    <td>Edition</td>
+                    <td>Book Issued</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of books">
+                    <td>{{list.bookId}}</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.image}}</td>
+                    <td>{{list.category}}</td>
+                    <td>{{list.authorName}}</td>
+                    <td>{{list.publishDate}}</td>
+                    <td>{{list.edition}}</td>
+                    <td>{{list.bookIssued}}/{{list.quantity}}</td>
+                    <td style="color: green;">Available</td>
+                    <td>
+                        <button [routerLink]="['../edit',list.bookId]" class="btn btn-primary btn-sm">Edit</button>&nbsp;
+                        <button class="btn btn-danger btn-sm" (click)="DeleteUser(list.bookId)">Delete</button>&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<router-outlet></router-outlet>

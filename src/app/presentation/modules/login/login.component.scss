@@ -1,10 +1,22 @@
-.container{
-   padding: 5%; 
-   margin:0 auto;
-}
-.card{
+.container {
+    padding: 4%;
+    // text-align: center;
+  }
+  .card {
+    display: block;
     border: 1px solid;
     padding: 5%;
-    // background-color: red;
     border-radius: 10px;
-}
+    width: 48%;
+    margin-left: 23%;
+  }
+  label{
+      font-weight: bold;
+  }
+  input{
+      border-radius: 5px;
+      border: 1px solid;
+  }
+  span{
+    color: red;
+  }

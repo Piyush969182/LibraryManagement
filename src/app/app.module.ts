@@ -18,6 +18,8 @@ import { EditbookComponent } from './presentation/modules/books/editbook/editboo
 import { CategorylistComponent } from './presentation/modules/categories/categorylist/categorylist.component';
 import { AddcategoryComponent } from './presentation/modules/categories/addcategory/addcategory.component';
 import { EditcategoryComponent } from './presentation/modules/categories/editcategory/editcategory.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './presentation/modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,22 +27,12 @@ import { EditcategoryComponent } from './presentation/modules/categories/editcat
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    UsersComponent,
-    UserlistComponent,
-    AdduserComponent,
-    EdituserComponent,
-    BooksComponent,
-    CategoriesComponent,
-    BooklistComponent,
-    AddbookComponent,
-    EditbookComponent,
-    CategorylistComponent,
-    AddcategoryComponent,
-    EditcategoryComponent
+    // DashboardComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,53 @@
-<nav style="background-color: blue;" class="navbar navbar-expand-lg navbar-light background-color">
-  <img src="./assets/LibraryLogo.png" alt=""><label for="">Library Management</label>
-  <div style="text-align: end;" class="col-md-9">
-    <img src="./assets/dummyprofile.jpg" alt="">
-    <button class="btn-btn-primary">Logout</button>
+
+  <nav class="navbar navbar-expand-lg navbar-light bgColor">
+    <img src="./assets/LibraryLogo.png" alt="" ><h5 >Library Management</h5>
+    <div style="text-align: end;" class="col-md-10">
+      <img src="./assets/dummyprofile.jpg" alt="">
+      <button class="btn btn-dark" (click)="Logout()">Logout</button>
+    </div>
+  </nav>
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link " data-bs-toggle="tab" [routerLink]="['../home/dashboard']">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['../home/users/list']">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-bs-toggle="tab" [routerLink]="['../home/categories/list']">Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" [routerLink]="['../home/books/list']">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-bs-toggle="tab" [routerLink]="['../home/books/bookissue']">Book Issue</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-bs-toggle="tab" [routerLink]="['../home/books/bookreturn']">Book Return</a>
+      </li>
+    </ul>
+  
+    <!-- Tab panes -->
+    <!-- <div class="tab-content">
+      <div id="home" class="container tab-pane active"><br>
+        <h3>Categories</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div id="menu1" class="container tab-pane fade"><br>
+        <h3>Books</h3>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div id="menu2" class="container tab-pane fade"><br>
+        <h3>Users</h3>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+    </div> -->
   </div>
-</nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <div class="row">
@@ -16,18 +58,18 @@
         </div>
         <div class="col-md-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">Categories</a>
+            <a class="nav-link" [routerLink]="['../home/categories']">Categories</a>
           </li>
         </div>
         <div class="col-md-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">Books</a>
+            <a class="nav-link" [routerLink]="['../home/books']">Books</a>
           </li>
         </div>
         <div class="col-md-2">
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Users</a>
+            <a class="nav-link" [routerLink]="['../home/users']">Users</a>
           </li>
         </div>
         <div class="col-md-2">
@@ -41,10 +83,7 @@
           </li>
         </div>
       </div>
-
-
-
-
     </ul>
   </div>
-</nav>
+</nav> -->
+<router-outlet></router-outlet>

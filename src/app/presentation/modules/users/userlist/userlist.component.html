@@ -1,1 +1,48 @@
-<p>userlist works!</p>
+<div class="container">
+    <h2 style="text-align: center;">Users List</h2>
+    <!-- <button class="btn btn-primary btn-sm" routerLink="../add">Add Book</button> -->
+    <br>
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table id="UserTable">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Mobile Number</td>
+                    <td>Gender</td>
+                    <td>Date of Birth</td>
+                    <td>Course</td>
+                    <td>Semester</td>
+                    <td>Address</td>
+                    <td>Country</td>
+                    <td>State</td>
+                    <td>City</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of books">
+                    <td>{{list.userId}}</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.email}}</td>
+                    <td>{{list.mobile}}</td>
+                    <td>{{list.gender}}</td>
+                    <td>{{list.dob}}</td>
+                    <td>{{list.course}}</td>
+                    <td>{{list.semester}}</td>
+                    <td>{{list.address}}</td>
+                    <td>{{list.country}}</td>
+                    <td>{{list.state}}</td>
+                    <td>{{list.city}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="DeleteUser(list.bookId)">Delete</button>&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<router-outlet></router-outlet>

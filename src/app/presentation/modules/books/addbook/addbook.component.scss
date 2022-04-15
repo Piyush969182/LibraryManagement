@@ -1,0 +1,29 @@
+.container{
+    padding: 5%;
+}
+
+.card{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+h2{
+    font-size: 25px;
+}
+span{
+    color: red;
+}
+icon-shape {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icon-sm {
+    width: 2rem;
+    height: 2rem;
+    
+}

@@ -1,1 +1,33 @@
-<p>categorylist works!</p>
+<div class="container">
+    <h2 style="text-align: center;">Category List</h2>
+    <button class="btn btn-primary btn-sm" routerLink="../add">Add Category</button>
+    <br>
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table id="CategoryTable">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Image</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of category">
+                    <td>{{list.id}}</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.image}}</td>
+                    <td>
+                        <button [routerLink]="['../edit',list.id]" class="btn btn-primary btn-sm">Edit</button>&nbsp;
+                        <button class="btn btn-danger btn-sm" (click)="DeleteUser(list.id)">Delete</button>&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>
