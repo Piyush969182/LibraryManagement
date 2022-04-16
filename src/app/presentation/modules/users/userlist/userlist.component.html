@@ -13,7 +13,6 @@
                     <td>Email</td>
                     <td>Mobile Number</td>
                     <td>Gender</td>
-                    <td>Date of Birth</td>
                     <td>Course</td>
                     <td>Semester</td>
                     <td>Address</td>
@@ -24,13 +23,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let list of books">
+                <tr *ngFor="let list of users">
                     <td>{{list.userId}}</td>
-                    <td>{{list.name}}</td>
+                    <td>{{list.firstName}} {{list.lastName}}</td>
                     <td>{{list.email}}</td>
                     <td>{{list.mobile}}</td>
                     <td>{{list.gender}}</td>
-                    <td>{{list.dob}}</td>
                     <td>{{list.course}}</td>
                     <td>{{list.semester}}</td>
                     <td>{{list.address}}</td>

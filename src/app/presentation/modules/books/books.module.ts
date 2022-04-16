@@ -10,7 +10,7 @@ import { BookReturnComponent } from './book-return/book-return.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatepickerModule } from 'ng2-datepicker';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { DatepickerModule } from 'ng2-datepicker';
     BooksRoutingModule,
     DataTablesModule,
     ReactiveFormsModule,
-    DatepickerModule
+    DatepickerModule,
+    HttpClientModule
   ]
 })
 export class BooksModule { }

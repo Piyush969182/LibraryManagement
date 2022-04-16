@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Categories } from 'src/app/core/models/categories.model';
+import { CategoriesService } from 'src/app/core/services/categories.service';
 
 @Component({
   selector: 'app-categorylist',
@@ -6,37 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categorylist.component.scss']
 })
 export class CategorylistComponent implements OnInit {
-  category: any[]=[
-    {
-      id:'1',
-      name:'Historic',
-      image:''
-    },
-    {
-      id:'2',
-      name:'Comic',
-      image:''
-    },
-    {
-      id:'3',
-      name:'Poetry',
-      image:''
-    }
-  ]
-  constructor() { }
+  // category!: Categories
+  category!: any
+  constructor(private categoryService: CategoriesService) { }
   dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
-    setTimeout(()=>{   
-      $('#CategoryTable').DataTable( {
+    setTimeout(() => {
+      $('#CategoryTable').DataTable({
         pagingType: 'full_numbers',
         pageLength: 2,
         processing: true,
-        lengthMenu : [5, 10, 15]
-    } );
+        lengthMenu: [5, 10, 15]
+      });
     }, 1);
+    console.log('category')
+    this.categoryService.getCategory().subscribe(response => {
+      console.log(response)
+      this.category=response;
+    });
   }
   DeleteUser(Id: number) {
-
   }
 }

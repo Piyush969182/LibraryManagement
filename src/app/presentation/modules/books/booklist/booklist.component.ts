@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BooksService } from 'src/app/core/services/books.service';
 
 @Component({
   selector: 'app-booklist',
@@ -6,43 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booklist.component.scss']
 })
 export class BooklistComponent implements OnInit {
-
-  books: any[]=[
-    {
-      bookId:'1',
-      name:'The Guns of August',
-      image:'',
-      category:'Historic',
-      authorName:'',
-      publishDate:'10-07-2015',
-      edition:'2020',
-      bookIssued:'02',
-      quantity:'05',
-    },
-    {
-      bookId:'2',
-      name:'The Crusades',
-      image:'',
-      category:'Historic',
-      authorName:'',
-      publishDate:'10-07-2015',
-      edition:'2020',
-      bookIssued:'02',
-      quantity:'05',
-    },
-    {
-      bookId:'3',
-      name:'Revolutions ',
-      image:'',
-      category:'Historic',
-      authorName:'',
-      publishDate:'10-07-2015',
-      edition:'2020',
-      bookIssued:'06',
-      quantity:'10',
-    },
-  ]
-  constructor() { }
+  books!: any
+  constructor(private Books:BooksService) { }
   dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
@@ -54,6 +20,10 @@ export class BooklistComponent implements OnInit {
         lengthMenu : [5, 10, 15]
     } );
     }, 1);
+    this.Books.getBooks().subscribe(response => {
+      console.log(response)
+      this.books=response;
+    });
   }
   DeleteUser(Id: number) {
 

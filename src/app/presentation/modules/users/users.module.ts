@@ -6,7 +6,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { DataTablesModule } from 'angular-datatables';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ]
 })
 export class UsersModule { }

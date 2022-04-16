@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-userlist',
@@ -7,23 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserlistComponent implements OnInit {
 
-  books: any[] = [
-    {
-      userId: '1',
-      name: 'Piyush Soni',
-      email: 'piyushsoni9691@gmail.com',
-      mobile: '9691821850',
-      gender: 'Male',
-      dob: '10-07-2015',
-      course: 'Btech',
-      semester: '02',
-      address: 'vijay Nagar',
-      country: 'India',
-      state: 'Madhya Pradesh',
-      city: 'Indore',
-    },
-  ]
-  constructor() { }
+  users: any
+  constructor(private userService:UsersService) { }
   dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
@@ -35,6 +21,10 @@ export class UserlistComponent implements OnInit {
         lengthMenu: [5, 10, 15]
       });
     }, 1);
+    this.userService.getUsers().subscribe(response => {
+      console.log(response)
+      this.users=response;
+    });
   }
   DeleteUser(Id: number) {
 

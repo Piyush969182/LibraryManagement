@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatepickerOptions } from 'ng2-datepicker';
+import { BooksService } from 'src/app/core/services/books.service';
+import { CategoriesService } from 'src/app/core/services/categories.service';
 
 @Component({
   selector: 'app-addbook',
@@ -9,36 +11,37 @@ import { DatepickerOptions } from 'ng2-datepicker';
   styleUrls: ['./addbook.component.scss']
 })
 export class AddbookComponent implements OnInit {
-  category: any[]=[
-    {
-      id:'1',
-      name:'Historic',
-      image:''
-    },
-    {
-      id:'2',
-      name:'Comic',
-      image:''
-    },
-    {
-      id:'3',
-      name:'Poetry',
-      image:''
-    }
-  ]
+  // category: any[]=[
+  //   {
+  //     id:'1',
+  //     name:'Historic',
+  //     image:''
+  //   },
+  //   {
+  //     id:'2',
+  //     name:'Comic',
+  //     image:''
+  //   },
+  //   {
+  //     id:'3',
+  //     name:'Poetry',
+  //     image:''
+  //   }
+  // ]
+  category!: any
   books!:FormGroup
   quantity :number = 1
   date = new Date();
-  constructor(private fb:FormBuilder,private router:Router) { 
+  constructor(private fb:FormBuilder,private router:Router, private bookService:BooksService,private categoryService: CategoriesService) { 
     this.books=this.fb.group({
-      bookId:['',Validators.required],
+      // bookId:['',Validators.required],
       name:['',Validators.required],
       description:['',[Validators.required, Validators.minLength(10)]],
-      category:['',Validators.required],
+      categoryId:['',Validators.required],
       authorName:['',Validators.required],
       publishDate:['',Validators.required],
       edition:['',Validators.required],
-      quantity:[this.quantity,Validators.required],
+      quantity:[5,Validators.required],
       image:['',Validators.required],
     });
  
@@ -59,10 +62,21 @@ export class AddbookComponent implements OnInit {
   //   keyboardEvents: true // enable keyboard events
   // };
   ngOnInit(): void {
+    this.categoryService.getCategory().subscribe(response => {
+      console.log(response)
+      this.category=response;
+    });
   }
   addBook(){
     console.log(this.books.value);
-    this.router.navigateByUrl('home/books/list');
+    this.bookService.addBook(this.books.value).subscribe(s => {
+      console.log(s)
+      this.router.navigateByUrl('home/books/list');
+    },
+      err => {
+        alert("Something Went Wrong");
+      }
+    );
   }
   get f(){
     return this.books.controls;

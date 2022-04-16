@@ -7,7 +7,7 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { CategorylistComponent } from './categorylist/categorylist.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { DataTablesModule } from 'angular-datatables';
     CommonModule,
     CategoriesRoutingModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ]
 })
 export class CategoriesModule { }
