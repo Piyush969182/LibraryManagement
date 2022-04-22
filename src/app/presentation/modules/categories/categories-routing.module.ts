@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/core/guard/auth.guard';
 import { EditbookComponent } from '../books/editbook/editbook.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { CategoriesComponent } from './categories.component';
@@ -9,19 +10,23 @@ import { EditcategoryComponent } from './editcategory/editcategory.component';
 const routes: Routes = [
   {
     path:'',
-    component:CategoriesComponent
+    component:CategoriesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'list',
-    component:CategorylistComponent
+    component:CategorylistComponent,
+    canActivate: [AuthGuard],
   },
   {    
     path:'add',
-    component:AddcategoryComponent
+    component:AddcategoryComponent,
+    canActivate: [AuthGuard],
   },
   {    
-    path:'edit/:id',
-    component:EditcategoryComponent
+    path:'edit/:categoryId',
+    component:EditcategoryComponent,
+    canActivate: [AuthGuard],
   }
 ];
 

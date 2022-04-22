@@ -1,37 +1,48 @@
-<!-- <div class="container">
-    <div class="card">
-        <form [formGroup]="booksissue" (ngSubmit)="issueBook()">
-            <h2>Add Book</h2>
-            <br>            <br>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Category:</label>
-                        <select class="form-control" id="exampleFormControlSelect1" formControlName="categoryId">
-                          <option>--Select Category--</option>
-                          <option *ngFor="let order of category; let i = index" [value]="category[i].categoryId">
-                            {{category[i].name}}
-                          </option>
-                        </select>
-                        <span *ngIf="f['categoryId']?.errors?.['required'] && f['categoryId'].touched">*Category is required</span>
-                      </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Category:</label>
-                        <select class="form-control" id="exampleFormControlSelect1" formControlName="categoryId">
-                          <option>--Select Category--</option>
-                          <option *ngFor="let order of category; let i = index" [value]="category[i].categoryId">
-                            {{category[i].name}}
-                          </option>
-                        </select>
-                        <span *ngIf="f['categoryId']?.errors?.['required'] && f['categoryId'].touched">*Category is required</span>
-                      </div>
-                </div>
+<div class="container">
+  <div class="card">
+    <form [formGroup]="booksissue" (ngSubmit)="issueBook()">
+      <h2>Book Issue</h2>
+      <br> <br>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Book:</label>
+            <select class="form-control" id="exampleFormControlSelect1" formControlName="bookId">
+              <option value="">--Select Book--</option>
+              <option *ngFor="let order of books; let i = index" [value]="books[i].bookId">
+                {{books[i].name}} ({{books[i].bookId}})
+              </option>
+            </select>
+            <span *ngIf="f['bookId']?.errors?.['required'] && f['bookId'].touched">*Please select book</span>
+          </div>
+          <!-- <div class="form-group" >
+            <div id="myDropdown" class="form-group" >
+              <label for="exampleFormControlSelect1">Book:</label>
+              <input type="text" placeholder="Select Category"  list="cities" formControlName="bookId">
+              <datalist id="cities">
+                <option *ngFor="let order of books; let i = index" [value]="books[i].bookId">
+                 {{books[i].name}} ({{books[i].bookId}}) 
+              </option>
+              </datalist>
             </div>
-            
-            <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-</div> -->
+          </div> -->
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">User:</label>
+            <select class="form-control" id="exampleFormControlSelect1" formControlName="userId">
+              <option value="">--Select User--</option>
+              <option *ngFor="let order of users; let i = index" [value]="users[i].userId">
+                {{users[i].firstName}} {{users[i].lastName}} ({{users[i].mobile}})
+              </option>
+            </select>
+            <span *ngIf="f['userId']?.errors?.['required'] && f['userId'].touched">*Please select User</span>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <button type="submit" [disabled]="booksissue.invalid" class="btn btn-primary">Issue</button>
+    </form>
+  </div>
+</div>

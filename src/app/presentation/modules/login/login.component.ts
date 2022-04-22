@@ -11,6 +11,8 @@ import { UsersService } from 'src/app/core/services/users.service';
 export class LoginComponent implements OnInit {
   login!: FormGroup
   response: any;
+  // loginType: string='user';
+  loginType: string='admin';
   constructor(private fb: FormBuilder, private router: Router,private userService:UsersService) {
     this.login = this.fb.group({
       email: ['', [Validators.required,,Validators.email]],
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(s)
       this.response = s
       localStorage.setItem('token', this.response.token);
+      localStorage.setItem('loginType', this.loginType);
       this.router.navigateByUrl('home/dashboard');
     },
       err => {
@@ -39,3 +42,4 @@ export class LoginComponent implements OnInit {
     return this.login.controls;
   }
 }
+

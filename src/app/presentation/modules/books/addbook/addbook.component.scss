@@ -14,6 +14,18 @@ h2{
 span{
     color: red;
 }
+input{
+    margin-top: 1%;
+}
+textarea{
+    margin-top: 1%;
+}
+select{
+    margin-top: 1%;
+}
+ngx-datepicker{
+    margin-top: 1%;
+}
 icon-shape {
     display: inline-flex;
     align-items: center;
@@ -25,5 +37,4 @@ icon-shape {
 .icon-sm {
     width: 2rem;
     height: 2rem;
-    
 }

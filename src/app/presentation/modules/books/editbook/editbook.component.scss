@@ -1,0 +1,41 @@
+.container{
+    padding: 5%;
+}
+
+.card{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+h2{
+    font-size: 25px;
+}
+span{
+    color: red;
+}
+input{
+    margin-top: 1%;
+}
+textarea{
+    margin-top: 1%;
+}
+select{
+    margin-top: 1%;
+}
+ngx-datepicker{
+    margin-top: 1%;
+}
+icon-shape {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icon-sm {
+    width: 2rem;
+    height: 2rem;
+    
+}

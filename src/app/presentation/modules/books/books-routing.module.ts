@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/core/guard/auth.guard';
 import { AddbookComponent } from './addbook/addbook.component';
 import { BookIssueComponent } from './book-issue/book-issue.component';
 import { BookReturnComponent } from './book-return/book-return.component';
@@ -11,26 +12,32 @@ const routes: Routes = [
   {
     path:'',
     component:BooksComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'list',
-    component:BooklistComponent
+    component:BooklistComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'add',
-    component:AddbookComponent
+    component:AddbookComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'edit/:bookId',
-    component:EditbookComponent
+    component:EditbookComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'bookissue',
-    component:BookIssueComponent
+    component:BookIssueComponent,
+    canActivate: [AuthGuard],
   },
   {
     path:'bookreturn',
-    component:BookReturnComponent
+    component:BookReturnComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

@@ -1,6 +1,6 @@
 <div class="container">
     <h2 style="text-align: center;">Book List</h2>
-    <button class="btn btn-primary btn-sm" routerLink="../add">Add Book</button>
+    <button *ngIf="IsUser" class="btn btn-primary btn-sm" routerLink="../add">Add Book</button>
     <br>
     <br>
     <br>
@@ -17,23 +17,26 @@
                     <td>Edition</td>
                     <td>Book Issued</td>
                     <td>Status</td>
-                    <td>Action</td>
+                    <td *ngIf="IsUser">Action</td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let list of books">
                     <td>{{list.bookId}}</td>
                     <td>{{list.name}}</td>
-                    <td>{{list.name}}</td>
-                    <td>{{list.image}}</td>
+                    <td>{{list.category.name}}</td>
+                    <td><img src="{{image}}" ></td>
                     <td>{{list.authorName}}</td>
                     <td>{{list.publishDate}}</td>
                     <td>{{list.edition}}</td>
                     <td>{{list.bookIssued}}/{{list.quantity}}</td>
-                    <td style="color: green;">Available</td>
-                    <td>
+                    <td *ngIf="list.bookIssued<list.quantity" style="color: green;">Available</td>
+                    <td *ngIf="list.bookIssued>=list.quantity" style="color: green;">Not Available</td>
+                    <td *ngIf="IsUser">
                         <button [routerLink]="['../edit',list.bookId]" class="btn btn-primary btn-sm">Edit</button>&nbsp;
-                        <button class="btn btn-danger btn-sm" (click)="DeleteUser(list.bookId)">Delete</button>&nbsp;
+                        <!-- <i class="fa fa-edit"></i> -->
+                        <i class="fa fa-clock"></i>
+                        <button class="btn btn-danger btn-sm" (click)="DeleteBook(list.bookId)">Delete</button>&nbsp;
                     </td>
                 </tr>
             </tbody>

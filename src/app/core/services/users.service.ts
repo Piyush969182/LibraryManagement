@@ -19,4 +19,10 @@ base_url:string='https://localhost:44310/api/'
   getUsers(): Observable<Users> {
     return this.http.get<Users>(`${this.base_url}Users/GetUsers`);
   }
+  getToken(){
+    return localStorage.getItem('token');
+  }
+  getLoginType(){
+    return localStorage.getItem('loginType');
+  }
 }

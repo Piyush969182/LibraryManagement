@@ -13,17 +13,17 @@ export class UserlistComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
-    setTimeout(() => {
-      $('#UserTable').DataTable({
-        pagingType: 'full_numbers',
-        pageLength: 2,
-        processing: true,
-        lengthMenu: [5, 10, 15]
-      });
-    }, 1);
     this.userService.getUsers().subscribe(response => {
       console.log(response)
       this.users=response;
+      setTimeout(() => {
+        $('#UserTable').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 2,
+          processing: true,
+          lengthMenu: [5, 10, 15]
+        });
+      }, 25);
     });
   }
   DeleteUser(Id: number) {

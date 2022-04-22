@@ -8,6 +8,7 @@ import { SignupComponent } from './presentation/modules/signup/signup.component'
 import { HomeComponent } from './presentation/modules/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorInterceptor } from './core/interceptor/interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,38 +7,45 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Name:</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" formControlName="name">
+                        <input type="email" class="form-control" [maxlength]="50" id="exampleFormControlInput1" placeholder="Enter Name"
+                            formControlName="name">
                         <span *ngIf="f['name']?.errors?.['required'] && f['name'].touched">*Name is required</span>
+                        <span *ngIf="f['name']?.errors?.['minlength'] && f['name'].touched">*Minimum length 3 character required</span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Author Name:</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Author Name" formControlName="authorName">
-                        <span *ngIf="f['authorName']?.errors?.['required'] && f['authorName'].touched">*Author Name is required</span>
+                        <input type="email" class="form-control" [maxlength]="50" id="exampleFormControlInput1"
+                            placeholder="Enter Author Name" formControlName="authorName">
+                        <span *ngIf="f['authorName']?.errors?.['required'] && f['authorName'].touched">*Author Name is
+                            required</span>
+                        <span *ngIf="f['authorName']?.errors?.['minlength'] && f['authorName'].touched">*Minimum 3 character required</span>
                     </div>
                 </div>
-            </div>           
+            </div>
             <br>
             <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Category:</label>
                         <select class="form-control" id="exampleFormControlSelect1" formControlName="categoryId">
-                          <option>--Select Category--</option>
-                          <option *ngFor="let order of category; let i = index" [value]="category[i].categoryId">
-                            {{category[i].name}}
-                          </option>
+                            <option value="">--Select Category--</option>
+                            <option *ngFor="let order of category; let i = index" [value]="category[i].categoryId">
+                                {{category[i].name}}
+                            </option>
                         </select>
-                        <span *ngIf="f['categoryId']?.errors?.['required'] && f['categoryId'].touched">*Category is required</span>
+                        <span *ngIf="f['categoryId']?.errors?.['required'] && f['categoryId'].touched">*Category is
+                            required</span>
 
-                      </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Publish Date:</label>
-                        <ngx-datepicker class="form-control" formControlName="publishDate" placeholder="Select Publish Date"></ngx-datepicker>
-                        <!-- <span *ngIf="f['publishDate']?.errors?.['required'] && f['publishDate'].touched">*Publish Date is required</span> -->
+                        <ngx-datepicker class="form-control" formControlName="publishDate"
+                            placeholder="Select Publish Date" [options]="options"></ngx-datepicker>
+                        <span *ngIf="f['publishDate']?.errors?.['required'] && f['publishDate'].touched">*Publish Date is required</span>
                     </div>
                 </div>
             </div>
@@ -49,17 +56,23 @@
                         <label for="exampleFormControlInput1">Edition:</label>
                         <input type="number" class="form-control" id="exampleFormControlInput1"
                             placeholder="Enter Edition" formControlName="edition">
-                        <span *ngIf="f['edition']?.errors?.['required'] && f['edition'].touched">*Edition is required</span>
+                        <span *ngIf="f['edition']?.errors?.['required'] && f['edition'].touched">*Edition is
+                            required</span>
+                        <!-- <span *ngIf="f['edition']?.errors?.['re'] && f['edition'].touched">*Enter Valid Edition</span> -->
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Quantity:</label>
                         <div class="input-group w-auto justify-content-start align-items-center">
-                            <input type="button" value="-" (click)="addSubtractValue(false)" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
-                            <input type="number" disabled step="1" value="{{quantity}}" name="quantity" class="quantity-field border-0 text-center w-25" >
-                            <input type="button" value="+" (click)="addSubtractValue(true)" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity">
-                          </div>
+                            <input type="button" value="-" (click)="addSubtractValue(false)"
+                                class="button-minus border rounded-circle  icon-shape icon-sm mx-1 "
+                                data-field="quantity">
+                            <input type="number" disabled step="1" value="{{quantity}}" name="quantity"
+                                class="quantity-field border-0 text-center w-25">
+                            <input type="button" value="+" (click)="addSubtractValue(true)"
+                                class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,8 +81,10 @@
                 <label for="exampleFormControlTextarea1">Description:</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
                     placeholder=" Enter Description" [maxLength]="150" formControlName="description"></textarea>
-                <span *ngIf="f['description']?.errors?.['required'] && f['description'].touched">*Description is required</span>
-                <span *ngIf="f['description']?.errors?.['minlength'] && f['description'].touched">*Minimum length should be 10</span>
+                <span *ngIf="f['description']?.errors?.['required'] && f['description'].touched">*Description is
+                    required</span>
+                <span *ngIf="f['description']?.errors?.['minlength'] && f['description'].touched">*Minimum length should
+                    be 10</span>
             </div>
             <br>
             <div class="form-group">
@@ -79,7 +94,7 @@
                 <span *ngIf="f['image']?.errors?.['required'] && f['image'].touched">*Image is required</span>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" [disabled]="books.invalid" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>

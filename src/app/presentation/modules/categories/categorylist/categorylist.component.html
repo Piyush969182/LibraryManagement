@@ -1,6 +1,6 @@
 <div class="container">
     <h2 style="text-align: center;">Category List</h2>
-    <button class="btn btn-primary btn-sm" routerLink="../add">Add Category</button>
+    <button *ngIf="IsUser" class="btn btn-primary btn-sm" routerLink="../add">Add Category</button>
     <br>
     <br>
     <br>
@@ -11,17 +11,17 @@
                     <td>Id</td>
                     <td>Name</td>
                     <td>Image</td>
-                    <td>Action</td>
+                    <td *ngIf="IsUser">Action</td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let list of category">
                     <td>{{list.categoryId}}</td>
                     <td>{{list.name}}</td>
-                    <td>{{list.image}}</td>
-                    <td>
-                        <button [routerLink]="['../edit',list.id]" class="btn btn-primary btn-sm">Edit</button>&nbsp;
-                        <button class="btn btn-danger btn-sm" (click)="DeleteUser(list.id)">Delete</button>&nbsp;
+                    <td><img src="{{image}}" ></td>
+                    <td *ngIf="IsUser">
+                        <button  [routerLink]="['../edit',list.categoryId]" class="btn btn-primary btn-sm">Edit</button>&nbsp;
+                        <button  class="btn btn-danger btn-sm" (click)="DeleteCategory(list.categoryId)">Delete</button>&nbsp;
                     </td>
                 </tr>
             </tbody>

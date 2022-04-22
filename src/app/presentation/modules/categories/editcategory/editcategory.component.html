@@ -5,16 +5,15 @@
             <br>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Name:</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" formControlName="name">
+                <input type="email" class="form-control" [maxlength]="20" id="exampleFormControlInput1" placeholder="Enter Name" formControlName="name">
                 <span *ngIf="f['name']?.errors?.['required'] && f['name'].touched">*Name is required</span>
             </div>
             <br>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder=" Enter Description" formControlName="description"></textarea>
+                <textarea class="form-control" rows="2" [maxlength]="150" placeholder="Enter Description" formControlName="description"></textarea>
                 <span *ngIf="f['description']?.errors?.['required'] && f['description'].touched">*Description is required</span>
-                <span *ngIf="f['description']?.errors?.['minlength'] && f['description'].touched">*Minimum length should be 10</span>
-                <span *ngIf="f['description']?.errors?.['maxlength'] && f['description'].touched">*Maximum length is 50</span>
+                <span *ngIf="f['description']?.errors?.['minlength'] && f['description'].touched">*Minimum 10 characters required</span>
             </div>
             <br>
             <div class="form-group">
